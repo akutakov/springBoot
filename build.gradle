@@ -1,0 +1,52 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		maven {
+			name 'bft-local'
+			url 'http://jin-server.bft.local:8097/nexus/content/groups/public/'
+		}
+		//mavenLocal()
+		//mavenCentral()
+		//maven { url "https://repo.spring.io/snapshot" }
+		//maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'test1'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+
+		maven {
+			name 'bft-local'
+			url 'http://jin-server.bft.local:8097/nexus/content/groups/public/'
+		}
+
+
+	//mavenLocal()
+	//mavenCentral()
+	//maven { url "https://repo.spring.io/snapshot" }
+	//maven { url "https://repo.spring.io/milestone" }
+}
+
+compileTestJava.enabled = false
+
+
+dependencies {
+	//compile('org.springframework.boot:spring-boot-starter')
+	compile('com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:0.0.13')
+	//testCompile('org.springframework.boot:spring-boot-starter-test')
+}
